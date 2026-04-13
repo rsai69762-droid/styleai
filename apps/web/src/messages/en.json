@@ -1,0 +1,90 @@
+{
+  "common": {
+    "appName": "StylAI",
+    "tagline": "AI-powered personal fashion",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "seeMore": "See more",
+    "back": "Back"
+  },
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "recommendations": "Recommendations",
+    "profile": "Profile",
+    "wishlist": "Wishlist",
+    "search": "Search..."
+  },
+  "home": {
+    "hero": "Find your style with AI",
+    "heroSub": "Personalized fashion recommendations based on your taste, weather, and trends",
+    "cta": "Get my recommendations",
+    "trending": "Trending now",
+    "newArrivals": "New arrivals"
+  },
+  "products": {
+    "title": "Products",
+    "filters": "Filters",
+    "sortBy": "Sort by",
+    "price": "Price",
+    "brand": "Brand",
+    "category": "Category",
+    "gender": "Gender",
+    "noResults": "No products found",
+    "results": "{count} products"
+  },
+  "product": {
+    "addToWishlist": "Add to wishlist",
+    "removeFromWishlist": "Remove from wishlist",
+    "viewOnSite": "View on site",
+    "similar": "Similar products",
+    "tags": "Tags"
+  },
+  "recommendations": {
+    "title": "Your recommendations",
+    "generate": "Generate recommendations",
+    "generating": "AI is analyzing your profile...",
+    "occasion": "Occasion",
+    "mood": "Style mood",
+    "occasions": {
+      "casual": "Casual",
+      "work": "Work",
+      "evening": "Evening",
+      "beach": "Beach"
+    },
+    "moods": {
+      "classic": "Classic",
+      "trendy": "Trendy",
+      "relaxed": "Relaxed"
+    },
+    "why": "Why this product",
+    "empty": "No recommendations yet. Generate some!"
+  },
+  "profile": {
+    "title": "My profile",
+    "style": "My style",
+    "preferences": "Preferences",
+    "budget": "Budget",
+    "colors": "Favorite colors",
+    "brands": "Favorite brands",
+    "sizes": "Sizes",
+    "save": "Save"
+  },
+  "footer": {
+    "about": "About",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "contact": "Contact"
+  },
+  "auth": {
+    "login": "Log in",
+    "logout": "Log out",
+    "signup": "Sign up",
+    "email": "Email",
+    "password": "Password",
+    "loading": "Loading...",
+    "switchToSignup": "No account yet? Sign up",
+    "switchToLogin": "Already have an account? Log in",
+    "loginRequired": "Log in to generate recommendations"
+  }
+}

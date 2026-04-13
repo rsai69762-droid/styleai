@@ -1,0 +1,90 @@
+{
+  "common": {
+    "appName": "StylAI",
+    "tagline": "Mode personnalisée par IA",
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "seeMore": "Voir plus",
+    "back": "Retour"
+  },
+  "nav": {
+    "home": "Accueil",
+    "products": "Produits",
+    "recommendations": "Recommandations",
+    "profile": "Profil",
+    "wishlist": "Favoris",
+    "search": "Rechercher..."
+  },
+  "home": {
+    "hero": "Trouvez votre style avec l'IA",
+    "heroSub": "Des recommandations mode personnalisées basées sur vos goûts, la météo et les tendances",
+    "cta": "Découvrir mes recommandations",
+    "trending": "Tendances du moment",
+    "newArrivals": "Nouveautés"
+  },
+  "products": {
+    "title": "Produits",
+    "filters": "Filtres",
+    "sortBy": "Trier par",
+    "price": "Prix",
+    "brand": "Marque",
+    "category": "Catégorie",
+    "gender": "Genre",
+    "noResults": "Aucun produit trouvé",
+    "results": "{count} produits"
+  },
+  "product": {
+    "addToWishlist": "Ajouter aux favoris",
+    "removeFromWishlist": "Retirer des favoris",
+    "viewOnSite": "Voir sur le site",
+    "similar": "Produits similaires",
+    "tags": "Tags"
+  },
+  "recommendations": {
+    "title": "Vos recommandations",
+    "generate": "Générer des recommandations",
+    "generating": "L'IA analyse votre profil...",
+    "occasion": "Occasion",
+    "mood": "Style recherché",
+    "occasions": {
+      "casual": "Casual",
+      "work": "Travail",
+      "evening": "Soirée",
+      "beach": "Plage"
+    },
+    "moods": {
+      "classic": "Classique",
+      "trendy": "Tendance",
+      "relaxed": "Décontracté"
+    },
+    "why": "Pourquoi ce produit",
+    "empty": "Pas encore de recommandations. Générez-en !"
+  },
+  "profile": {
+    "title": "Mon profil",
+    "style": "Mon style",
+    "preferences": "Préférences",
+    "budget": "Budget",
+    "colors": "Couleurs préférées",
+    "brands": "Marques préférées",
+    "sizes": "Tailles",
+    "save": "Enregistrer"
+  },
+  "footer": {
+    "about": "À propos",
+    "privacy": "Confidentialité",
+    "terms": "CGU",
+    "contact": "Contact"
+  },
+  "auth": {
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "signup": "Créer un compte",
+    "email": "Email",
+    "password": "Mot de passe",
+    "loading": "Chargement...",
+    "switchToSignup": "Pas encore de compte ? Créer un compte",
+    "switchToLogin": "Déjà un compte ? Se connecter",
+    "loginRequired": "Connectez-vous pour générer des recommandations"
+  }
+}

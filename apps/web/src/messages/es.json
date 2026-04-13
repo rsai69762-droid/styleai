@@ -1,0 +1,90 @@
+{
+  "common": {
+    "appName": "StylAI",
+    "tagline": "Moda personalizada con IA",
+    "loading": "Cargando...",
+    "error": "Ha ocurrido un error",
+    "seeMore": "Ver más",
+    "back": "Volver"
+  },
+  "nav": {
+    "home": "Inicio",
+    "products": "Productos",
+    "recommendations": "Recomendaciones",
+    "profile": "Perfil",
+    "wishlist": "Favoritos",
+    "search": "Buscar..."
+  },
+  "home": {
+    "hero": "Encuentra tu estilo con IA",
+    "heroSub": "Recomendaciones de moda personalizadas según tus gustos, el clima y las tendencias",
+    "cta": "Descubrir mis recomendaciones",
+    "trending": "Tendencias",
+    "newArrivals": "Novedades"
+  },
+  "products": {
+    "title": "Productos",
+    "filters": "Filtros",
+    "sortBy": "Ordenar por",
+    "price": "Precio",
+    "brand": "Marca",
+    "category": "Categoría",
+    "gender": "Género",
+    "noResults": "No se encontraron productos",
+    "results": "{count} productos"
+  },
+  "product": {
+    "addToWishlist": "Añadir a favoritos",
+    "removeFromWishlist": "Quitar de favoritos",
+    "viewOnSite": "Ver en el sitio",
+    "similar": "Productos similares",
+    "tags": "Etiquetas"
+  },
+  "recommendations": {
+    "title": "Tus recomendaciones",
+    "generate": "Generar recomendaciones",
+    "generating": "La IA analiza tu perfil...",
+    "occasion": "Ocasión",
+    "mood": "Estilo buscado",
+    "occasions": {
+      "casual": "Casual",
+      "work": "Trabajo",
+      "evening": "Noche",
+      "beach": "Playa"
+    },
+    "moods": {
+      "classic": "Clásico",
+      "trendy": "Tendencia",
+      "relaxed": "Relajado"
+    },
+    "why": "Por qué este producto",
+    "empty": "Aún no hay recomendaciones. ¡Genera algunas!"
+  },
+  "profile": {
+    "title": "Mi perfil",
+    "style": "Mi estilo",
+    "preferences": "Preferencias",
+    "budget": "Presupuesto",
+    "colors": "Colores favoritos",
+    "brands": "Marcas favoritas",
+    "sizes": "Tallas",
+    "save": "Guardar"
+  },
+  "footer": {
+    "about": "Acerca de",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "contact": "Contacto"
+  },
+  "auth": {
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "signup": "Crear cuenta",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "loading": "Cargando...",
+    "switchToSignup": "¿No tienes cuenta? Crear una",
+    "switchToLogin": "¿Ya tienes cuenta? Iniciar sesión",
+    "loginRequired": "Inicia sesión para generar recomendaciones"
+  }
+}

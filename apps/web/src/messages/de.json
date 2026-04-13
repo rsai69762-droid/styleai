@@ -1,0 +1,90 @@
+{
+  "common": {
+    "appName": "StylAI",
+    "tagline": "KI-gestützte persönliche Mode",
+    "loading": "Wird geladen...",
+    "error": "Ein Fehler ist aufgetreten",
+    "seeMore": "Mehr sehen",
+    "back": "Zurück"
+  },
+  "nav": {
+    "home": "Startseite",
+    "products": "Produkte",
+    "recommendations": "Empfehlungen",
+    "profile": "Profil",
+    "wishlist": "Wunschliste",
+    "search": "Suchen..."
+  },
+  "home": {
+    "hero": "Finden Sie Ihren Stil mit KI",
+    "heroSub": "Personalisierte Modeempfehlungen basierend auf Ihrem Geschmack, Wetter und Trends",
+    "cta": "Meine Empfehlungen entdecken",
+    "trending": "Im Trend",
+    "newArrivals": "Neuheiten"
+  },
+  "products": {
+    "title": "Produkte",
+    "filters": "Filter",
+    "sortBy": "Sortieren nach",
+    "price": "Preis",
+    "brand": "Marke",
+    "category": "Kategorie",
+    "gender": "Geschlecht",
+    "noResults": "Keine Produkte gefunden",
+    "results": "{count} Produkte"
+  },
+  "product": {
+    "addToWishlist": "Zur Wunschliste hinzufügen",
+    "removeFromWishlist": "Von der Wunschliste entfernen",
+    "viewOnSite": "Auf der Website ansehen",
+    "similar": "Ähnliche Produkte",
+    "tags": "Tags"
+  },
+  "recommendations": {
+    "title": "Ihre Empfehlungen",
+    "generate": "Empfehlungen generieren",
+    "generating": "KI analysiert Ihr Profil...",
+    "occasion": "Anlass",
+    "mood": "Stimmung",
+    "occasions": {
+      "casual": "Casual",
+      "work": "Arbeit",
+      "evening": "Abend",
+      "beach": "Strand"
+    },
+    "moods": {
+      "classic": "Klassisch",
+      "trendy": "Trendy",
+      "relaxed": "Entspannt"
+    },
+    "why": "Warum dieses Produkt",
+    "empty": "Noch keine Empfehlungen. Generieren Sie welche!"
+  },
+  "profile": {
+    "title": "Mein Profil",
+    "style": "Mein Stil",
+    "preferences": "Einstellungen",
+    "budget": "Budget",
+    "colors": "Lieblingsfarben",
+    "brands": "Lieblingsmarken",
+    "sizes": "Größen",
+    "save": "Speichern"
+  },
+  "footer": {
+    "about": "Über uns",
+    "privacy": "Datenschutz",
+    "terms": "AGB",
+    "contact": "Kontakt"
+  },
+  "auth": {
+    "login": "Anmelden",
+    "logout": "Abmelden",
+    "signup": "Registrieren",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "loading": "Laden...",
+    "switchToSignup": "Noch kein Konto? Registrieren",
+    "switchToLogin": "Bereits ein Konto? Anmelden",
+    "loginRequired": "Melden Sie sich an, um Empfehlungen zu erhalten"
+  }
+}

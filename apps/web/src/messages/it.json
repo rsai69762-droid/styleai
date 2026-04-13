@@ -1,0 +1,90 @@
+{
+  "common": {
+    "appName": "StylAI",
+    "tagline": "Moda personalizzata con IA",
+    "loading": "Caricamento...",
+    "error": "Si è verificato un errore",
+    "seeMore": "Vedi di più",
+    "back": "Indietro"
+  },
+  "nav": {
+    "home": "Home",
+    "products": "Prodotti",
+    "recommendations": "Raccomandazioni",
+    "profile": "Profilo",
+    "wishlist": "Preferiti",
+    "search": "Cerca..."
+  },
+  "home": {
+    "hero": "Trova il tuo stile con l'IA",
+    "heroSub": "Raccomandazioni di moda personalizzate in base ai tuoi gusti, al meteo e alle tendenze",
+    "cta": "Scopri le mie raccomandazioni",
+    "trending": "Di tendenza",
+    "newArrivals": "Novità"
+  },
+  "products": {
+    "title": "Prodotti",
+    "filters": "Filtri",
+    "sortBy": "Ordina per",
+    "price": "Prezzo",
+    "brand": "Marca",
+    "category": "Categoria",
+    "gender": "Genere",
+    "noResults": "Nessun prodotto trovato",
+    "results": "{count} prodotti"
+  },
+  "product": {
+    "addToWishlist": "Aggiungi ai preferiti",
+    "removeFromWishlist": "Rimuovi dai preferiti",
+    "viewOnSite": "Vedi sul sito",
+    "similar": "Prodotti simili",
+    "tags": "Tag"
+  },
+  "recommendations": {
+    "title": "Le tue raccomandazioni",
+    "generate": "Genera raccomandazioni",
+    "generating": "L'IA analizza il tuo profilo...",
+    "occasion": "Occasione",
+    "mood": "Stile cercato",
+    "occasions": {
+      "casual": "Casual",
+      "work": "Lavoro",
+      "evening": "Sera",
+      "beach": "Spiaggia"
+    },
+    "moods": {
+      "classic": "Classico",
+      "trendy": "Tendenza",
+      "relaxed": "Rilassato"
+    },
+    "why": "Perché questo prodotto",
+    "empty": "Nessuna raccomandazione ancora. Generane qualcuna!"
+  },
+  "profile": {
+    "title": "Il mio profilo",
+    "style": "Il mio stile",
+    "preferences": "Preferenze",
+    "budget": "Budget",
+    "colors": "Colori preferiti",
+    "brands": "Marche preferite",
+    "sizes": "Taglie",
+    "save": "Salva"
+  },
+  "footer": {
+    "about": "Chi siamo",
+    "privacy": "Privacy",
+    "terms": "Termini",
+    "contact": "Contatto"
+  },
+  "auth": {
+    "login": "Accedi",
+    "logout": "Esci",
+    "signup": "Registrati",
+    "email": "Email",
+    "password": "Password",
+    "loading": "Caricamento...",
+    "switchToSignup": "Non hai un account? Registrati",
+    "switchToLogin": "Hai già un account? Accedi",
+    "loginRequired": "Accedi per generare raccomandazioni"
+  }
+}
