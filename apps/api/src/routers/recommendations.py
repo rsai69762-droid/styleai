@@ -54,6 +54,7 @@ async def generate_recommendations(
     user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
 ):
+    print(' """Run the AI agent to generate personalized recommendations."""')
     """Run the AI agent to generate personalized recommendations."""
     result = await run_agent(
         db,

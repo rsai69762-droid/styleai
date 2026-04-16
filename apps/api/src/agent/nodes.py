@@ -4,7 +4,6 @@ import asyncio
 import json
 import uuid
 
-from langchain_ollama import ChatOllama
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.agent.state import AgentState, ProductCandidate, RecommendationResult
@@ -17,13 +16,28 @@ from src.agent.tools import (
 from src.config import settings
 from src.db.models import Recommendation
 
-_llm = ChatOllama(
-    model=settings.ollama_model,
-    base_url=settings.ollama_base_url,
-    temperature=0.3,
-    extra_body={"options": {"num_predict": 1024}},
-    think=False,
-)
+
+def _build_llm():
+    if settings.llm_provider == "ollama":
+        from langchain_anthropic import ChatAnthropic
+        return ChatAnthropic(
+            model=settings.anthropic_model,
+            api_key=settings.anthropic_api_key,
+            temperature=0.3,
+            max_tokens=1024,
+        )
+    else:
+        from langchain_ollama import ChatOllama
+        return ChatOllama(
+            model=settings.ollama_model,
+            base_url=settings.ollama_base_url,
+            temperature=0.3,
+            extra_body={"options": {"num_predict": 1024}},
+            think=False,
+        )
+
+
+_llm = _build_llm()
 
 
 async def gather_context(state: AgentState, *, db: AsyncSession) -> dict:
@@ -109,15 +123,12 @@ async def execute_search(state: AgentState, *, db: AsyncSession) -> dict:
     seen_ids: set[str] = set()
     candidates: list[ProductCandidate] = []
 
-    for query in queries:
-        results = await vector_search(
-            db,
-            query,
-            gender=gender,
-            min_price=min_price,
-            max_price=max_price,
-            limit=15,
-        )
+    all_results = await asyncio.gather(*(
+        vector_search(db, query, gender=gender, min_price=min_price, max_price=max_price, limit=15)
+        for query in queries
+    ))
+
+    for results in all_results:
         for r in results:
             if r["product_id"] not in seen_ids:
                 seen_ids.add(r["product_id"])

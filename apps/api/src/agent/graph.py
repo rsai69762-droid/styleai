@@ -14,7 +14,7 @@ from src.agent.nodes import (
     rank_and_filter,
 )
 from src.agent.state import AgentState
-
+from langsmith import traceable
 
 def build_graph(db: AsyncSession) -> StateGraph:
     """Build and compile the recommendation agent graph.
@@ -40,7 +40,7 @@ def build_graph(db: AsyncSession) -> StateGraph:
 
     return graph.compile()
 
-
+@traceable
 async def run_agent(
     db: AsyncSession,
     user_id: str,
@@ -48,6 +48,7 @@ async def run_agent(
     occasion: str | None = None,
     mood: str | None = None,
 ) -> dict:
+    ' graph.py run_agent function '
     """Run the recommendation agent and return results."""
     agent = build_graph(db)
     run_id = str(uuid.uuid4())
