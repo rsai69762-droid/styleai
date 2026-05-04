@@ -61,6 +61,7 @@ async def generate_recommendations(
         str(user.id),
         occasion=body.occasion,
         mood=body.mood,
+        modesty=body.modesty,
     )
 
     # Fetch full products for the response

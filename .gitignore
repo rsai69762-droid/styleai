@@ -47,3 +47,4 @@ data/raw/
 htmlcov/
 .nyc_output/
 coverage/
+infra/.env

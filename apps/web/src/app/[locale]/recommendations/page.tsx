@@ -23,18 +23,23 @@ export default function RecommendationsPage() {
   const { session } = useAuth();
   const [occasion, setOccasion] = useState<string>("");
   const [mood, setMood] = useState<string>("");
+  const [modesty, setModesty] = useState<boolean>(false);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<RecommendationResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   async function generate() {
-    if (!session) return;
+    if (!session) {
+      console.log('pas de sessioon generate bloqué ')
+      return;
+    }
     setLoading(true);
     setError(null);
     try {
-      const body: Record<string, string> = {};
+      const body: Record<string, string | boolean> = {};
       if (occasion) body.occasion = occasion;
       if (mood) body.mood = mood;
+      if (modesty) body.modesty = true;
 
       const res = await fetch(`${API_BASE}/recommendations/generate`, {
         method: "POST",
@@ -106,6 +111,17 @@ export default function RecommendationsPage() {
               </Button>
             ))}
           </div>
+        </div>
+
+        <div>
+          <p className="text-sm font-medium mb-2">{t("modesty")}</p>
+          <Button
+            variant={modesty ? "default" : "outline"}
+            size="sm"
+            onClick={() => setModesty(!modesty)}
+          >
+            {t("modestyToggle")}
+          </Button>
         </div>
 
         <Button onClick={generate} disabled={loading} size="lg" className="mt-4">

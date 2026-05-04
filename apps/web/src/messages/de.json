@@ -46,6 +46,8 @@
     "generating": "KI analysiert Ihr Profil...",
     "occasion": "Anlass",
     "mood": "Stimmung",
+    "modesty": "Bedeckte Kleidung",
+    "modestyToggle": "Hijab-kompatibel (weit, oversize)",
     "occasions": {
       "casual": "Casual",
       "work": "Arbeit",

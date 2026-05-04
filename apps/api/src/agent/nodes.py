@@ -18,7 +18,7 @@ from src.db.models import Recommendation
 
 
 def _build_llm():
-    if settings.llm_provider == "ollama":
+    if settings.llm_provider == "anthropic":
         from langchain_anthropic import ChatAnthropic
         return ChatAnthropic(
             model=settings.anthropic_model,
@@ -71,6 +71,16 @@ async def plan_search(state: AgentState) -> dict:
     trends = state.get("trends", [])
     occasion = state.get("occasion") or ""
     mood = state.get("mood") or ""
+    modesty = state.get("modesty", False)
+
+    modesty_instruction = ""
+    if modesty:
+        modesty_instruction = (
+            "\nCONTRAINTE PUDEUR : la personne porte le hijab. "
+            "Privilegie des vetements AMPLES et couvrants (jean large/wide leg, "
+            "chemise oversize, pull ample, robe longue, tunique, jupe longue, manches longues). "
+            "L'oversize est tendance. Evite coupes pres du corps, decolletes, manches courtes, jupes courtes."
+        )
 
     prompt = f"""Tu es un styliste personnel. Genere 2 a 4 requetes de recherche pour trouver des vetements adaptes a cette personne.
 
@@ -86,7 +96,7 @@ METEO : {weather.get('temperature_c', '?')}°C, {'pluie' if weather.get('is_rain
 TENDANCES ACTUELLES : {', '.join(trends) or 'non disponible'}
 
 {'OCCASION : ' + occasion if occasion else ''}
-{'STYLE RECHERCHE : ' + mood if mood else ''}
+{'STYLE RECHERCHE : ' + mood if mood else ''}{modesty_instruction}
 
 Reponds UNIQUEMENT avec un JSON array de strings, chaque string etant une requete de recherche en francais.
 Exemple : ["robe ete fleurie legere", "top blanc casual", "jean slim taille haute"]
@@ -108,7 +118,7 @@ Exemple : ["robe ete fleurie legere", "top blanc casual", "jean slim taille haut
     except json.JSONDecodeError:
         queries = ["vetements tendance"]
 
-    return {"search_queries": queries[:4]}
+    return {"search_queries": queries[:3]}
 
 
 async def execute_search(state: AgentState, *, db: AsyncSession) -> dict:
@@ -152,6 +162,7 @@ async def rank_and_filter(state: AgentState) -> dict:
     trends = state.get("trends", [])
     candidates = state.get("candidate_products", [])
     occasion = state.get("occasion") or ""
+    modesty = state.get("modesty", False)
 
     if not candidates:
         return {"recommendations": []}
@@ -159,8 +170,16 @@ async def rank_and_filter(state: AgentState) -> dict:
     # Build product list for LLM
     products_text = "\n".join(
         f"- ID:{c['product_id'][:8]} | {c['title']} | {c['brand'] or '?'} | {c['price_cents']/100:.0f}€ | tags: {', '.join(c['tags'][:5])}"
-        for c in candidates[:30]  # limit to 30 for context window
+        for c in candidates[:20]
     )
+
+    modesty_line = ""
+    if modesty:
+        modesty_line = (
+            "PUDEUR : compatibilite hijab requise. Score eleve pour pieces amples/oversize/longues "
+            "(wide leg, oversize, tunique, robe/jupe longue, manches longues). "
+            "Score faible pour pieces moulantes, courtes, decolletees."
+        )
 
     prompt = f"""Tu es un styliste personnel. Classe ces produits par pertinence pour cette personne et selectionne les 8 meilleurs.
 
@@ -172,6 +191,7 @@ PROFIL :
 METEO : {weather.get('temperature_c', '?')}°C, saison {weather.get('season', '?')}
 TENDANCES : {', '.join(trends) or 'non disponible'}
 {'OCCASION : ' + occasion if occasion else ''}
+{modesty_line}
 
 PRODUITS :
 {products_text}
@@ -226,6 +246,7 @@ async def format_output(state: AgentState, *, db: AsyncSession) -> dict:
         "trends": state.get("trends", []),
         "occasion": state.get("occasion"),
         "mood": state.get("mood"),
+        "modesty": state.get("modesty", False),
         "search_queries": state.get("search_queries", []),
     }
 

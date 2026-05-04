@@ -46,6 +46,8 @@
     "generating": "L'IA analyse votre profil...",
     "occasion": "Occasion",
     "mood": "Style recherché",
+    "modesty": "Tenue pudique",
+    "modestyToggle": "Compatible hijab (ample, oversize)",
     "occasions": {
       "casual": "Casual",
       "work": "Travail",

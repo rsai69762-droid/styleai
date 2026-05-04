@@ -27,6 +27,7 @@ class AgentState(TypedDict):
     user_id: str
     occasion: str | None  # optional: "travail", "soiree", "casual", "plage"
     mood: str | None  # optional: "classique", "tendance", "decontracte"
+    modesty: bool  # if True, prefer loose/oversized clothing compatible with hijab
 
     # Context (filled by gather_context)
     user_profile: dict  # gender, style_tags, budget, favorite_colors, etc.

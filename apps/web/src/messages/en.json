@@ -46,6 +46,8 @@
     "generating": "AI is analyzing your profile...",
     "occasion": "Occasion",
     "mood": "Style mood",
+    "modesty": "Modest outfit",
+    "modestyToggle": "Hijab-friendly (loose, oversized)",
     "occasions": {
       "casual": "Casual",
       "work": "Work",

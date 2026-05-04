@@ -11,6 +11,7 @@ from src.schemas.products import ProductOut
 class RecommendationGenerateIn(BaseModel):
     occasion: str | None = Field(None, description="Ex: travail, soiree, casual, plage")
     mood: str | None = Field(None, description="Ex: classique, tendance, decontracte")
+    modesty: bool = Field(False, description="Tenue pudique/ample (compatible hijab)")
 
 
 class RecommendationItemOut(BaseModel):

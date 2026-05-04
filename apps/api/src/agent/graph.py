@@ -47,6 +47,7 @@ async def run_agent(
     *,
     occasion: str | None = None,
     mood: str | None = None,
+    modesty: bool = False,
 ) -> dict:
     ' graph.py run_agent function '
     """Run the recommendation agent and return results."""
@@ -57,6 +58,7 @@ async def run_agent(
         "user_id": user_id,
         "occasion": occasion,
         "mood": mood,
+        "modesty": modesty,
         "user_profile": {},
         "weather": None,
         "trends": [],
