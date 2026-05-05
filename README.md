@@ -164,3 +164,55 @@ pnpm lint
 - **Port 5434 déjà utilisé** : modifiez le mapping dans [infra/docker-compose.yml](infra/docker-compose.yml).
 - **L'API ne se connecte pas à Postgres en Docker** : vérifiez que `DATABASE_URL` pointe vers `postgres` (et non `localhost`) dans `apps/api/.env` lorsqu'elle tourne en conteneur.
 - **Ollama injoignable depuis Docker** : le compose utilise `host.docker.internal:11434` — assurez-vous qu'Ollama écoute bien sur l'hôte.
+
+
+## Accès à la base de données
+
+Postgres tourne dans le conteneur `stylai-db` et est exposé sur le port hôte **5434** (mappé vers `5432` côté conteneur). Voir [infra/docker-compose.yml](infra/docker-compose.yml).
+
+### Connexion depuis l'hôte (psql)
+
+```bash
+# avec mot de passe interactif
+psql -h localhost -p 5434 -U stylai -d stylai
+# mot de passe : stylai_dev_password (ou la valeur de DB_PASSWORD)
+```
+
+Ou en une seule ligne avec une URL de connexion :
+
+```bash
+psql "postgresql://stylai:stylai_dev_password@localhost:5434/stylai"
+```
+
+### Connexion depuis l'intérieur du conteneur
+
+```bash
+docker exec -it stylai-db psql -U stylai -d stylai
+```
+
+### Clients GUI (TablePlus, DBeaver, pgAdmin, DataGrip…)
+
+| Champ      | Valeur                  |
+|------------|-------------------------|
+| Host       | `localhost` (`127.0.0.1`) |
+| Port       | `5434`                  |
+| Database   | `stylai`                |
+| User       | `stylai`                |
+| Password   | `stylai_dev_password`   |
+
+### Commandes psql utiles
+
+```sql
+\dt              -- lister les tables
+\d products      -- décrire une table
+\dx              -- lister les extensions (vérifier la présence de "vector" pour pgvector)
+SELECT count(*) FROM products;
+```
+
+### Installer psql si nécessaire
+
+```bash
+brew install libpq && brew link --force libpq
+# ou
+brew install postgresql@16
+```

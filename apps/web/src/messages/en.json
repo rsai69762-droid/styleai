@@ -31,7 +31,8 @@
     "category": "Category",
     "gender": "Gender",
     "noResults": "No products found",
-    "results": "{count} products"
+    "results": "{count} products",
+    "loadMore": "Load more"
   },
   "product": {
     "addToWishlist": "Add to wishlist",

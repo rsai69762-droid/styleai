@@ -31,7 +31,8 @@
     "category": "Catégorie",
     "gender": "Genre",
     "noResults": "Aucun produit trouvé",
-    "results": "{count} produits"
+    "results": "{count} produits",
+    "loadMore": "Charger plus"
   },
   "product": {
     "addToWishlist": "Ajouter aux favoris",

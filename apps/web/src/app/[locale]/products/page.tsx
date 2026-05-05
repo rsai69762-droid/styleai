@@ -1,7 +1,10 @@
 import { useTranslations } from "next-intl";
 import { ProductCard } from "@/components/product/product-card";
-import { getProducts, searchProducts } from "@/lib/api";
+import { ProductsGrid } from "@/components/product/products-grid";
+import { getProducts, searchProducts, type Product } from "@/lib/api";
 import { ProductFilters } from "@/components/product/product-filters";
+
+const PAGE_SIZE = 20;
 
 export default async function ProductsPage({
   searchParams,
@@ -10,36 +13,77 @@ export default async function ProductsPage({
 }) {
   const params = await searchParams;
   const query = typeof params.q === "string" ? params.q : undefined;
-  const page = typeof params.page === "string" ? params.page : "1";
+  const pageParam = typeof params.page === "string" ? params.page : "1";
+  const page = Math.max(1, Number.parseInt(pageParam, 10) || 1);
   const gender = typeof params.gender === "string" ? params.gender : undefined;
   const brand = typeof params.brand === "string" ? params.brand : undefined;
 
-  const apiParams: Record<string, string> = { page, page_size: "20" };
+  if (query) {
+    const searchData = await searchProducts(query, {
+      limit: String(PAGE_SIZE * 2),
+    }).catch(() => null);
+    const products = searchData ? searchData.results.map((r) => r.product) : [];
+    return (
+      <ProductsPageShell query={query} count={products.length}>
+        <StaticGrid products={products} />
+      </ProductsPageShell>
+    );
+  }
+
+  const apiParams: Record<string, string> = {
+    page: String(page),
+    page_size: String(PAGE_SIZE),
+    sort_by: "created_at",
+  };
   if (gender) apiParams.gender = gender;
   if (brand) apiParams.brand = brand;
 
-  let products;
-  if (query) {
-    const searchData = await searchProducts(query, { limit: "40", ...apiParams }).catch(() => null);
-    products = searchData ? searchData.results.map((r) => r.product) : [];
-  } else {
-    const listData = await getProducts(apiParams).catch(() => null);
-    products = listData?.products ?? [];
-  }
+  const listData = await getProducts(apiParams).catch(() => null);
+  const products = listData?.products ?? [];
+  const total = listData?.total ?? products.length;
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <PageHeader query={query} count={products.length} />
-      <ProductFilters />
+    <ProductsPageShell count={total}>
       {products.length === 0 ? (
         <NoResults />
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6">
-          {products.map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
-        </div>
+        <ProductsGrid
+          initialProducts={products}
+          initialPage={page}
+          pageSize={PAGE_SIZE}
+          total={total}
+          filters={{ gender, brand }}
+        />
       )}
+    </ProductsPageShell>
+  );
+}
+
+function ProductsPageShell({
+  query,
+  count,
+  children,
+}: {
+  query?: string;
+  count: number;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <PageHeader query={query} count={count} />
+      <ProductFilters />
+      {children}
+    </div>
+  );
+}
+
+function StaticGrid({ products }: { products: Product[] }) {
+  if (products.length === 0) return <NoResults />;
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6">
+      {products.map((p) => (
+        <ProductCard key={p.id} product={p} />
+      ))}
     </div>
   );
 }
