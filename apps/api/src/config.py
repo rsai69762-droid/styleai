@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     ollama_model: str = "qwen3:8b"
     anthropic_api_key: str = ""
     anthropic_model: str = "claude-haiku-4-5-20251001"
-    llm_provider: str = "anthropic"  # "anthropic" or "ollama"
+    llm_provider: str = "ollama"  # "anthropic" or "ollama"
     open_meteo_base_url: str = "https://api.open-meteo.com/v1"
     environment: str = "development"
 

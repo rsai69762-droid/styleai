@@ -1,7 +1,9 @@
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1";
+const API_BASE =
+  (typeof window === "undefined"
+    ? process.env.INTERNAL_API_URL
+    : process.env.NEXT_PUBLIC_API_URL) || "http://localhost:8000/api/v1";
 
 async function fetchAPI<T>(path: string, options?: RequestInit): Promise<T> {
-  console.log("API_BASE " , API_BASE)
   const res = await fetch(`${API_BASE}${path}`, {
     ...options,
     signal: AbortSignal.timeout(5000),
